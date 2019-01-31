@@ -106,7 +106,7 @@ def CrawlingItemBlog(base_url, id):
         text = text_maker.handle(c.prettify())
         # 有的文章名字特殊，会新建文件失败
         try:
-            #写入文件
+            # 写入文件
             f = codecs.open('./mds/' + file_name + '.md', 'w', encoding='utf-8')
             hexo_str = '---\n' + hexo_title + hexo_date + hexo_categories + hexo_tags + '\n---\n'
 
@@ -121,9 +121,9 @@ def CrawlingItemBlog(base_url, id):
         return False
 
 
-def start_spider():
+def start_spider(username):
     # 把下面这个base_url换成你csdn的地址
-    base_url = 'https://blog.csdn.net/qq_36982160/'
+    base_url = 'https://blog.csdn.net/' + username + '/'
     second_url = base_url + 'article/list/'
     # 从第一页开始爬取
     start_url = second_url + '1'
@@ -167,4 +167,5 @@ def start_spider():
 
 
 if __name__ == "__main__":
-    start_spider()
+    username = 'qq_36982160'
+    start_spider(username)
